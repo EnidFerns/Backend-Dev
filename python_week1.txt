@@ -1,0 +1,103 @@
+#camelCase
+#snake_case
+a = b= c= 10
+a, c= 5,2
+print(c)
+
+# del(c)
+# print(c)
+
+#literals
+#numeric(int, float, complex),  sequence - same type, index access ordered :([list] -same or diff-mutable, (tuples) - immuatable: cannot be changed, string), dictionary: {key:value}, boolean, {set} - inordered-non indexed nonrepeated
+
+
+#strings - 0 indexing : statrs from 0 name[0]
+#len(name)
+
+name = 'this is a'\
+    ' multiline string'
+
+print(name)
+
+#concatatination  a+b
+
+
+#type casting
+
+#input()
+#print()   --------- ags ------ object, sep, end, file(where values print to by default it is std out), flush (to move data from temp story to perm memory storage)
+
+#output formatting
+a= 10
+b = 8
+sum = a+b
+
+print('adding {} and {} = {}'.format(a,b,sum))
+print('my {0} likes {1}'.format("dog", "apples"))
+print('my {1} likes {0}'.format("dog", "apples"))
+print('my {0} likes {0}'.format("dog", "apples"))
+
+#control flows and conditionals
+#operators -->mathematical(+,-,/,*), comparison, logical(true and false condtions - and, or, not)
+#control flow --> conditional stmts(if , else, elif ) || loops--> for , while
+
+#match stmts. v3.10
+http_status=501
+
+match http_status:
+    case 200 | 202:
+        print('success')
+    case 400:
+        print('bad request')
+    case 500 | 501:
+        print('server error')
+    case _:
+        print('default stmt')
+
+#looping- for and while loop            
+# The for loop is based on the size or length of the elements to iterate over. 
+# On the other hand, a while loop is based upon a condition being true.
+count = 0
+while count< len(name):
+    print(name[count])
+    count+=1
+
+#for i in range(10): #for loop has no index# use enumerate function to access index
+
+for idx,item in enumerate(name):
+    print(idx, item)
+
+# Controlling loops
+# control statements such as break, continue and pass. 
+favorites = ['Creme Brulee', 'Apple Pie', 'Churros', 'Tiramisú', 'Chocolate Cake']
+# The pass statement allows you to run through the loop in its entirety and effectively ignore that the if condition has been satisfied.
+for dessert in favorites:
+    if dessert == 'Churros':
+        pass
+    print('Other desserts I like are', dessert) 
+
+for dessert in favorites:
+    if dessert == 'Churros':
+        continue
+    print('Other desserts I like are', dessert) 
+
+
+for dessert in favorites:
+    if dessert == 'Pudding':
+        print('Yes one of my favorite desserts is', dessert)
+        break 
+else:
+    print('No sorry, not a dessert on my list')
+
+
+#nested loops increase tim ecomplexity for large data
+import time
+start_time = time.time()
+
+#outer loop
+for i in range(100):
+    #inner loop
+    for j in range(1000):
+        print(0, end=' ')
+    print() #empty string for new line
+print(round((time.time()-start_time),2)) #rounds time to 2 decimal places

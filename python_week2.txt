@@ -121,3 +121,115 @@ print(sumof(cooffee = 12.8, tea = 8.4))
 
 
 #errors, exceptions and file handling
+
+#syntax errors and exceptions
+
+def divide_by(a,b):
+    return a / b
+# print(divide_by(40,0))#error - in math cant divide by 0
+
+#handling errors
+try:
+    ans = divide_by(40,0)
+except:
+    print('something went wrong')
+
+# to trap the exception use base class exception
+try:
+    ans = divide_by(40,0)
+except Exception as e:
+    print('something went wrong!',e)
+    print(e.__class__) #class of error
+
+# ZeroDivisionError -In math there are rules about dividing by zer
+try:
+    ans = divide_by(40,0)
+except ZeroDivisionError as e: 
+    print(e, 'cannot divide by zero')
+except Exception as e:   #multiple excetions
+    print(e,"somethings wrong")
+
+# IndexError - trying to locate an item from the list that does not exist. 
+items = [1,2,3,4,5]
+try:
+    item = items[6]
+    print(item)
+except IndexError as e:
+    print(e,'item doesnt exist in list')
+
+# FileNotFoundError -  looking for a file that does not exist
+try:
+    with open('file_does_not_exist.txt', 'r') as file:
+        print(file.read())
+except FileNotFoundError as e:
+    print(e, "file not found")
+
+# file handling in python
+# 2 functions - open- reading, writing and creating files and close
+#open function 
+# open(<filename> <filelocation>,<mode>) -- 2 args
+#mode - action (read, write or create) and output format - text or binary
+# mode = 'r' open and read in text
+# mode = 'rb' open and read in binary
+# mode ='r+' opens file for reading and writing
+# mode = 'w' opens file for writing.. overwrites existingi file.
+# mode = 'a' opens file for apppening or editing data
+
+#close function - to close file connection - no args
+#close()
+
+# with open function
+#second way to open and close a file is with open function- closes file automatically
+# with open('testing.txt','r') as file:
+    
+#for file handling with binary add letter b to the mode lkke rb, rb+, wb, ab
+
+# reading
+file = open('text.txt', mode='r')
+data = file.readline() #or file.readlines()
+print(data)
+file.close()
+
+with open('text.txt',mode='r') as file: #better at error handling and auto closes file
+    data = file.readline()
+    print(data)
+
+# creating
+# variables store in ram that loose data when turned off
+with open('new_file.txt','w') as file:
+    file.write('this is new file done')
+
+with open('multiline_new_file.txt','w') as file:#overwirtes each time
+    file.writelines(['this is new file done','\nhi this is second line'])
+
+with open('multiline_new_file.txt','a') as file:#adds
+    file.writelines(['\nthis is new file done','\nhi this is second line'])
+
+#handlinlg exceptions using FileNotFoundError
+try:
+    with open('sample/multiline_new_file.txt','a') as file:
+        file.writelines(['\nthis is new file done','\nhi this is second line'])
+except FileNotFoundError as e:
+    print('error',e)
+
+# reading content of file
+# read, readline and readlines
+with open('new_file.txt','r') as file:
+    print(file.read(40)) #reads entire file as string or if int provided reaads 40 chars
+
+with open('new_file.txt','r') as file:
+    print(file.readline(10)) #reads single line as string as specified chars of the line
+
+with open('multiline_new_file.txt','r') as file:
+    # print(file.readlines()) #reads entire contents and returns ordered list that lets you iterate
+    for x in file:
+        print(x)
+#absolute -- entire path whether oyoure in the directory or not ; and relative paths --- no refernce to the root director. only info about path in the code working dir
+
+
+import random
+f_name = input('Type the file name: ')
+f = open(f_name) # "r" omitted as it's the default
+f_content = f.read()
+f_content_list = f_content.split("\n")
+print(random.choice(f_content_list))

@@ -1,0 +1,169 @@
+#programming paradigms - procedural, funtional, object oriented
+# procedural programming - step by step instructions
+#structures code into procedures/ sub routines
+
+# dry - dont repeat yourself
+# create functions that can be reused
+
+# algorithms - series of steps to solve a task/problem
+# recursion, divide and conquer, dynamic programming, greedy algorihtm
+
+#refactoring -sdlc 
+
+# making code faster 
+# code is measured by time and space(memory)
+
+#big O notation - horrible, bad, fair, good, excellent - measures algos complexity in space and time
+
+# constant time algo- sample time and space regardless of size
+# eg dictionary is considered constant - no iterations req to find 
+
+# linear time algo- grows depending on size of input
+# array size affects running time
+
+# logarithmic time algo - running time of input against the number of operations
+# binary search
+
+# quadratic time algo - linear operatioon of each value of linear data squared
+# nested list/ lested for loops
+
+# exponential time algo - algos that doubles with each iteration
+# fibnacci seq
+
+#  Algorithmic complexity is a measure of how long an algorithm will take to complete given the size of the input, or what is commonly called n or n times. The n represents the number of elements.
+# two types: Time complexity & Space complexity
+
+# Function -- Big O Notation
+
+# Constant -- O(c) fastest
+# Logarithmic -- O(log(n))
+# Linear -- O(n)
+# Quadratic -- O(n^2)
+# Cubic -- O(n^3)
+# Exponential -- O(2^n)
+# Factorial -- O(n!) slowest
+
+# functional programming - for processing large amounts of data at high speeds
+# does not change data outside the scope of the function. standard/ independent
+#2 types of functions - traditional and pure (always do the same thing and returns same result not depending on the number of times their called)
+
+#sorted()
+
+# pure functions cant change global scopes - Pure functions are used in functional programming to assure the integrity of data outside the scope of the pure function
+
+# n1 = list.copy()
+
+# multi threads
+
+# altering functions to make them pure functions.
+
+
+#recursion - function that calls itself 
+
+# Recursive function for Tower of Hanoi
+def hanoi(disks, source, helper, destination):
+    # Base Condition
+    if (disks == 1):
+        print('Disk {} moves from tower {} to tower {}.'.format(disks, source, destination))
+        return
+
+    # Recursive calls in which function calls itself
+    hanoi(disks - 1, source, destination, helper)
+    print('Disk {} moves from tower {} to tower {}.'.format(disks, source, destination))
+    hanoi(disks - 1, helper, source, destination)
+
+# Driver code
+disks = int(input('Number of disks to be displaced: '))
+'''
+Tower names passed as arguments:
+Source: A
+Helper: B
+Destination: C
+'''
+# Actual function call
+hanoi(disks, 'A', 'B', 'C')
+
+#reversing a string
+#using slice function
+# stringname[startparam:stopparam:stepparam]
+
+trial = 'reversal'
+new_trial = trial[::-1] # empty start and stop --- full string, - 1 reverse from right one index position at a time
+print(new_trial)
+
+def string_reverse(str):
+    if len(str) == 0:
+        return str
+    else:
+        return string_reverse(str[1:]) +str[0]
+    
+trial2 = 'reversal'
+r = string_reverse(trial2) #using recursion
+print(r)
+
+#map and filter - processing lists - map() returns every item in an iterable and filter() returns values if True.
+
+menu =  ['coffee','mocha','tea' ]
+
+# map(function, list)
+def find_coffee(coffee):
+    if coffee[0]== 'c':
+        return coffee
+map_coffee = map(find_coffee,menu)
+
+for x in map_coffee:
+    print(x)
+
+filter_coffee = filter(find_coffee, menu) #creates new list and only returns true values
+for x in filter_coffee:
+    print(x)
+
+
+#comprehensions  - create a new sequence from an already existing sequence.
+# There are four main types of comprehensions in Python: 
+# List comprehension  [ <expression> for x in <sequence> if <condition>] 
+# Dictionary comprehension dict = { key:value for key, value in <sequence> if <condition> } 
+# Set comprehension 
+# Generator comprehension
+
+data = [2,3,5,7,11,13,17,19,23,29,31]
+
+# Ex1: List comprehension: updating the same list
+data = [x+3 for x in data]
+print("Updating the list: ", data)
+# Ex3: With an if-condition: Multiples of four:
+fourx = [x for x in new_data if x%4 == 0 ]
+print("Divisible by four", fourx)
+# Ex5: Using range function:
+nines = [x for x in range(100) if x%9 == 0]
+print("Nines: ", nines)
+
+# Using range() function and no input list
+usingrange = {x:x*2 for x in range(12)}
+print("Using range(): ",usingrange)
+
+# Lists
+months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"]
+number = [1,2,3,4,5,6,7,8,9,10,11,12]
+
+# Using two input lists
+months_dict = {key:value for (key, value) in zip(number, months)} #zip function that combines the two lists.
+print("Using two lists: ", months_dict) #When the two lists are of unequal length, the length of the shorter list is the length of the dictionary
+
+# Note how in case of using two lists, the format it follows is: 
+# new_dict ={key:value for (key, value) in zip(list1, list2)}
+
+set_a = {x for x in range(10,20) if x not in [12,14,16]}
+print(set_a)
+
+# Generator comprehension - They are also more memory efficient as compared to list comprehensions. 
+data = [2,3,5,7,11,13,17,19,23,29,31]
+gen_obj = (x for x in data)
+print(gen_obj)
+print(type(gen_obj))
+for items in gen_obj:
+    print(items, end = " ")
+
+
+
+#object oriented proh=gramming

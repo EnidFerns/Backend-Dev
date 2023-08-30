@@ -1,0 +1,52 @@
+#import math
+
+import sys
+locations = sys.path
+for i in locations:
+    print(i)
+
+import calendar
+leapdays = calendar.leapdays(2000,2050)
+print(leapdays)
+isitleap = calendar.isleap(2036)
+print(isitleap)
+
+
+#modules
+import main
+import json
+json.decoder()
+
+import numpy #pip is package installer.. import after installing packages
+
+sys.path.insert(1,r'location path of odule' ) #1 is first index
+
+#namespaces and scopes - scope resolution
+#nonlocal scope
+
+#reload function
+
+import importlib
+import main
+importlib.reload(main)
+importlib.reload(main)
+
+import os
+c = os.listdir('dir')
+print(c)
+
+#testing - unit, integration , system and acceptance
+
+#pytest
+import add
+import pytest_lazyfixture
+def test_add():
+    assert add.add(4,5) == 9
+
+def test_sub():
+    assert add.sub(4,5) == -1
+
+# run --- python -m pytest python_week4.py
+# run --- python -m pytest python_week4.py::test_add
+
+#tdd - test then code

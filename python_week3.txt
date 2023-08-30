@@ -166,4 +166,64 @@ for items in gen_obj:
 
 
 
-#object oriented proh=gramming
+#object oriented proh=gramming - simplicity and reusability
+# xlasses objects and methods
+#instanciation
+
+#oop concepts
+#inheritance - deriving new clsass from existing
+class Parent:
+    Members of the parent class
+
+class Child(Parent):
+    Inherited members from parent class
+    Additional members of the child class
+# Method Resolution Order (MRO) that determines the flow of execution
+
+# # polymorphism - having many forms eg + in python diff for diff datatypes - a single function can act differently depending on diff objects
+string = "poly"
+num = 7
+sequence = [1,2,3]
+new_str = string * 3
+new_num = 7 * 3
+new_sequence = sequence * 3
+
+print(new_str, new_num, new_sequence)
+
+# encapsulation - lmits access using scopes/classes- prevents unwanted modification
+#Access modifiers represented by keywords such as public, private and protected are used for information hiding. 
+class Alpha:
+    def __init__(self):
+        self._a = 2.  # Protected member ‘a’
+        self.__b = 2.  # Private member ‘b’
+    
+    # name mangling -  these private and protected members can still be accessed from outside of the class
+    # name mangling is the use of two leading underscores and one trailing underscore, for example:
+
+    #_class__identifier  #Class is the name of the class and identifier is the data member that I want to access.
+
+# abstraction - hides implementation details - abstract classes and methods -  implemented by inheriting from something called the abc module. "abc" here stands for abstract base class.
+from abc import ABC   
+class ClassName(ABC):
+    pass
+
+#method overloading / overriding and constructors
+
+
+
+class MyClass:
+    # pass #placeholder when ntg needs to be executed
+    a = 5
+    print('hello')
+    def hello(self):
+        print('hei')
+
+myclass = MyClass() #class object
+print(MyClass().a) #instance object
+print(myclass.a)
+
+print(myclass.hello())
+
+#new method
+
+
